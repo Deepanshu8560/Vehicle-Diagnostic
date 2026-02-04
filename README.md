@@ -30,6 +30,11 @@ A powerful, real-time dashboard for monitoring electric vehicle telematics. This
 - **Component Analysis**: Detailed breakdown of Battery, Motor, Tires, and GPS health.
 - **Interactive Visualizations**: Dynamic charts and graphs powered by Chart.js and Recharts.
 - **Vehicle Fleet Management**: Switch between different vehicle models (Model S, 3, X, Y) to view specific data.
+- **Sidebar Navigation**: Seamless navigation between Dashboard, Energy Monitor, Analytics, and Settings.
+- **New Modules**:
+  - **Energy**: Monitor current consumption and regeneration.
+  - **Analytics**: View historical trip logs and efficiency stats.
+  - **Settings**: Configure app appearance and units.
 - **Responsive Design**: Modern, glassmorphism-inspired UI built with TailwindCSS and Radix UI.
 - **Status Alerts**: Automatic categorization of vehicle status (Excellent, Good, Warning) based on diagnostic thresholds.
 
@@ -41,6 +46,7 @@ The project follows a modern client-server architecture:
 
 **Frontend**
 - **Framework**: React 19 with Create React App (CRACO)
+- **Routing**: React Router DOM v6
 - **Styling**: TailwindCSS, Radix UI Primitives, Lucide Icons
 - **State Management**: Zustand / React Context
 - **Data Fetching**: Axios
@@ -168,7 +174,8 @@ npm test
 ├── frontend/
 │   ├── src/
 │   │   ├── components/       # Reusable UI components
-│   │   ├── App.js            # Main React component
+│   │   ├── pages/            # Page views (Dashboard, Energy, Analytics, Settings)
+│   │   ├── App.js            # Main React component & Routing
 │   │   └── index.css         # Global styles & Tailwind config
 │   ├── public/
 │   ├── craco.config.js       # CRA configuration override

@@ -1,29 +1,50 @@
 import { useEffect, useCallback } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import '@/App.css';
 import axios from 'axios';
 import useVehicleStore from '@/store/vehicleStore';
+import useSettingsStore from '@/store/settingsStore';
 import VehicleSelector from '@/components/VehicleSelector';
-import VehicleStatusHero from '@/components/VehicleStatusHero';
-import BatteryHealthCard from '@/components/BatteryHealthCard';
-import MotorStatusCard from '@/components/MotorStatusCard';
-import TirePressureCard from '@/components/TirePressureCard';
-import GPSStatusCard from '@/components/GPSStatusCard';
+import Sidebar from '@/components/Sidebar';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+// Pages
+import Dashboard from '@/pages/Dashboard';
+import Energy from '@/pages/Energy';
+import Analytics from '@/pages/Analytics';
+import Settings from '@/pages/Settings';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || '';
 const API = `${BACKEND_URL}/api`;
 
-function App() {
-  const { 
-    vehicles, 
-    selectedVehicle, 
-    diagnostics, 
-    loading,
-    setVehicles, 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
+function AppContent() {
+  const {
+    vehicles,
+    selectedVehicle,
+    setVehicles,
     setSelectedVehicle,
     setDiagnostics,
     setLoading,
-    setError 
+    setError,
+    loading
   } = useVehicleStore();
+  const { darkMode } = useSettingsStore(); // Added this line
+
+  // Added theme object
+  const theme = {
+    bg: darkMode ? 'bg-[#050505]' : 'bg-gray-50',
+    text: darkMode ? 'text-white' : 'text-gray-900',
+    headerBg: darkMode ? 'bg-[#050505]/95' : 'bg-white/95',
+    headerBorder: darkMode ? 'border-white/10' : 'border-gray-200',
+    subText: darkMode ? 'text-[#A1A1AA]' : 'text-gray-500'
+  };
 
   // Fetch vehicles on mount
   useEffect(() => {
@@ -32,7 +53,7 @@ function App() {
         setLoading(true);
         const response = await axios.get(`${API}/vehicles`);
         setVehicles(response.data);
-        if (response.data.length > 0) {
+        if (response.data.length > 0 && !selectedVehicle) {
           setSelectedVehicle(response.data[0]);
         }
       } catch (error) {
@@ -44,7 +65,7 @@ function App() {
     };
 
     fetchVehicles();
-  }, [setVehicles, setSelectedVehicle, setLoading, setError]);
+  }, [setVehicles, setSelectedVehicle, setLoading, setError, selectedVehicle]);
 
   // Fetch diagnostics for selected vehicle
   const fetchDiagnostics = useCallback(async () => {
@@ -71,56 +92,54 @@ function App() {
 
   if (loading && vehicles.length === 0) {
     return (
-      <div className="min-h-screen bg-[#050505] flex items-center justify-center" data-testid="app-loading">
+      <div className={`min-h-screen ${theme.bg} flex items-center justify-center`} data-testid="app-loading">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-[#3E6AE1] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-white text-lg">Loading Vehicle Systems...</p>
+          <p className={`${theme.text} text-lg`}>Loading Vehicle Systems...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white" data-testid="app-container">
+    <div className={`min-h-screen ${theme.bg} ${theme.text} transition-colors duration-300`} data-testid="app-container">
       {/* Header */}
-      <header className="border-b border-white/10 bg-[#050505]/95 backdrop-blur-sm sticky top-0 z-50">
+      <header className={`border-b ${theme.headerBorder} ${theme.headerBg} backdrop-blur-sm sticky top-0 z-50 transition-colors duration-300`}>
         <div className="container mx-auto px-4 md:px-6 py-4">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl md:text-3xl font-bold tracking-tight" data-testid="app-title">
                 Tesla Diagnostics
               </h1>
-              <p className="text-sm text-[#A1A1AA] mt-1">Real-time Vehicle Telemetry</p>
+              <p className={`text-sm ${theme.subText} mt-1`}>Real-time Vehicle Telemetry</p>
             </div>
-            <VehicleSelector />
+            <div className="flex items-center gap-4">
+              <VehicleSelector />
+              <Sidebar />
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Main Dashboard */}
+      {/* Main Content */}
       <main className="container mx-auto px-4 md:px-6 py-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-          {/* Hero Section - spans 2 columns on desktop */}
-          <VehicleStatusHero vehicle={selectedVehicle} diagnostics={diagnostics} />
-
-          {/* Diagnostic Cards */}
-          <BatteryHealthCard diagnostics={diagnostics} />
-          <MotorStatusCard diagnostics={diagnostics} />
-          <TirePressureCard diagnostics={diagnostics} />
-          <GPSStatusCard diagnostics={diagnostics} />
-        </div>
-
-        {/* Footer Info */}
-        <div className="mt-8 text-center" data-testid="last-update">
-          <p className="text-xs text-[#52525B]">
-            Last updated: {diagnostics?.timestamp ? new Date(diagnostics.timestamp).toLocaleTimeString() : 'N/A'}
-          </p>
-          <p className="text-xs text-[#52525B] mt-1">
-            Data refreshes every 3 seconds
-          </p>
-        </div>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/energy" element={<Energy />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
       </main>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <AppContent />
+    </Router>
   );
 }
 
