@@ -1,7 +1,6 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import useVehicleStore from '@/store/vehicleStore';
 import useSettingsStore from '@/store/settingsStore';
-import useSettingsStore from '@/store/settingsStore';
 
 const VehicleSelector = () => {
   const { vehicles, selectedVehicle, setSelectedVehicle } = useVehicleStore();
