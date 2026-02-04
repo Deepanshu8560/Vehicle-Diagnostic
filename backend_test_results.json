@@ -1,0 +1,145 @@
+{
+  "timestamp": "2026-02-04T12:08:30.165235",
+  "summary": {
+    "tests_run": 15,
+    "tests_passed": 15,
+    "success_rate": 100.0
+  },
+  "detailed_results": [
+    {
+      "name": "API Root",
+      "endpoint": "",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_sample": "{'message': 'Tesla Vehicle Diagnostics API', 'version': '1.0.0'}"
+    },
+    {
+      "name": "Get All Vehicles",
+      "endpoint": "vehicles",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_sample": "[{'id': 'tesla-model-s-001', 'name': 'Model S Plaid', 'model': 'Model S', 'year': 2024, 'vin': '5YJSA1E26MF123456', 'color': 'Midnight Silver'}, {'id': 'tesla-model-3-001', 'name': 'Model 3 Performanc"
+    },
+    {
+      "name": "Get Vehicle tesla-model-s-001",
+      "endpoint": "vehicles/tesla-model-s-001",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_sample": "{'id': 'tesla-model-s-001', 'name': 'Model S Plaid', 'model': 'Model S', 'year': 2024, 'vin': '5YJSA1E26MF123456', 'color': 'Midnight Silver'}"
+    },
+    {
+      "name": "Get Diagnostics for tesla-model-s-001",
+      "endpoint": "diagnostics/tesla-model-s-001",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_sample": "{'vehicle_id': 'tesla-model-s-001', 'timestamp': '2026-02-04T12:08:21.384555+00:00', 'battery': {'level': 21.7, 'health': 86.8, 'voltage': 402.9, 'temperature': 22.8, 'charging': True}, 'motor': {'tem"
+    },
+    {
+      "name": "Get Status for tesla-model-s-001",
+      "endpoint": "status/tesla-model-s-001",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_sample": "{'vehicle_id': 'tesla-model-s-001', 'overall_status': 'good', 'systems': {'battery': 'ok', 'motor': 'warning', 'tires': 'ok', 'gps': 'ok'}, 'timestamp': '2026-02-04T12:08:22.241248+00:00'}"
+    },
+    {
+      "name": "Get Vehicle tesla-model-3-001",
+      "endpoint": "vehicles/tesla-model-3-001",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_sample": "{'id': 'tesla-model-3-001', 'name': 'Model 3 Performance', 'model': 'Model 3', 'year': 2024, 'vin': '5YJ3E1EB1MF234567', 'color': 'Pearl White'}"
+    },
+    {
+      "name": "Get Diagnostics for tesla-model-3-001",
+      "endpoint": "diagnostics/tesla-model-3-001",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_sample": "{'vehicle_id': 'tesla-model-3-001', 'timestamp': '2026-02-04T12:08:23.771606+00:00', 'battery': {'level': 91.2, 'health': 96.3, 'voltage': 364.0, 'temperature': 38.9, 'charging': False}, 'motor': {'te"
+    },
+    {
+      "name": "Get Status for tesla-model-3-001",
+      "endpoint": "status/tesla-model-3-001",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_sample": "{'vehicle_id': 'tesla-model-3-001', 'overall_status': 'excellent', 'systems': {'battery': 'ok', 'motor': 'ok', 'tires': 'ok', 'gps': 'ok'}, 'timestamp': '2026-02-04T12:08:24.412625+00:00'}"
+    },
+    {
+      "name": "Get Vehicle tesla-model-x-001",
+      "endpoint": "vehicles/tesla-model-x-001",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_sample": "{'id': 'tesla-model-x-001', 'name': 'Model X Long Range', 'model': 'Model X', 'year': 2024, 'vin': '5YJXCBE20MF345678', 'color': 'Deep Blue'}"
+    },
+    {
+      "name": "Get Diagnostics for tesla-model-x-001",
+      "endpoint": "diagnostics/tesla-model-x-001",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_sample": "{'vehicle_id': 'tesla-model-x-001', 'timestamp': '2026-02-04T12:08:25.918050+00:00', 'battery': {'level': 66.4, 'health': 95.4, 'voltage': 396.5, 'temperature': 43.1, 'charging': False}, 'motor': {'te"
+    },
+    {
+      "name": "Get Status for tesla-model-x-001",
+      "endpoint": "status/tesla-model-x-001",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_sample": "{'vehicle_id': 'tesla-model-x-001', 'overall_status': 'good', 'systems': {'battery': 'ok', 'motor': 'warning', 'tires': 'ok', 'gps': 'ok'}, 'timestamp': '2026-02-04T12:08:26.764633+00:00'}"
+    },
+    {
+      "name": "Get Vehicle tesla-model-y-001",
+      "endpoint": "vehicles/tesla-model-y-001",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_sample": "{'id': 'tesla-model-y-001', 'name': 'Model Y Dual Motor', 'model': 'Model Y', 'year': 2024, 'vin': '7SAYGDEE1MF456789', 'color': 'Red Multi-Coat'}"
+    },
+    {
+      "name": "Get Diagnostics for tesla-model-y-001",
+      "endpoint": "diagnostics/tesla-model-y-001",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_sample": "{'vehicle_id': 'tesla-model-y-001', 'timestamp': '2026-02-04T12:08:28.062569+00:00', 'battery': {'level': 46.2, 'health': 99.4, 'voltage': 379.4, 'temperature': 42.4, 'charging': True}, 'motor': {'tem"
+    },
+    {
+      "name": "Get Status for tesla-model-y-001",
+      "endpoint": "status/tesla-model-y-001",
+      "method": "GET",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_sample": "{'vehicle_id': 'tesla-model-y-001', 'overall_status': 'excellent', 'systems': {'battery': 'ok', 'motor': 'ok', 'tires': 'ok', 'gps': 'ok'}, 'timestamp': '2026-02-04T12:08:28.903621+00:00'}"
+    },
+    {
+      "name": "Invalid Vehicle ID",
+      "endpoint": "vehicles/invalid-id",
+      "method": "GET",
+      "expected_status": 404,
+      "actual_status": 404,
+      "success": true,
+      "response_sample": "{'detail': 'Vehicle not found'}"
+    }
+  ]
+}

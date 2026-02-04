@@ -1,0 +1,150 @@
+{
+  "design_system": {
+    "typography": {
+      "font_family": {
+        "headings": "Barlow, sans-serif",
+        "body": "Inter, sans-serif",
+        "mono": "JetBrains Mono, monospace"
+      },
+      "scale": {
+        "h1": "text-4xl md:text-5xl font-bold tracking-tight",
+        "h2": "text-3xl font-semibold tracking-tight",
+        "h3": "text-2xl font-medium",
+        "body_large": "text-lg leading-relaxed",
+        "body_base": "text-base leading-normal",
+        "caption": "text-sm text-muted-foreground uppercase tracking-wider"
+      }
+    },
+    "colors": {
+      "theme": "dark",
+      "palette": {
+        "background": {
+          "default": "#050505",
+          "paper": "#121212",
+          "subtle": "#1A1A1A"
+        },
+        "primary": {
+          "default": "#3E6AE1",
+          "hover": "#3256B5",
+          "active": "#26428B",
+          "foreground": "#FFFFFF"
+        },
+        "accent": {
+          "success": "#22C55E",
+          "warning": "#EAB308",
+          "danger": "#EF4444",
+          "info": "#3B82F6"
+        },
+        "text": {
+          "primary": "#FFFFFF",
+          "secondary": "#A1A1AA",
+          "muted": "#52525B"
+        },
+        "border": {
+          "default": "#27272A",
+          "active": "#3F3F46"
+        }
+      },
+      "gradients": {
+        "glow_blue": "radial-gradient(circle at center, rgba(62, 106, 225, 0.15) 0%, rgba(0, 0, 0, 0) 70%)",
+        "glow_red": "radial-gradient(circle at center, rgba(239, 68, 68, 0.15) 0%, rgba(0, 0, 0, 0) 70%)"
+      }
+    },
+    "spacing": {
+      "container_padding": "p-6 md:p-8 lg:p-12",
+      "element_gap": "gap-4 md:gap-6",
+      "section_gap": "gap-8 md:gap-12"
+    },
+    "borders": {
+      "radius": {
+        "sm": "rounded-sm",
+        "md": "rounded-md",
+        "lg": "rounded-lg",
+        "full": "rounded-full"
+      },
+      "width": "border",
+      "style": "border-white/10"
+    },
+    "shadows": {
+      "card": "0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3)",
+      "glow": "0 0 15px rgba(62, 106, 225, 0.3)"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 rounded-md transition-all duration-200 font-medium shadow-[0_0_10px_rgba(62,106,225,0.2)] hover:shadow-[0_0_20px_rgba(62,106,225,0.4)]",
+      "secondary": "bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-4 py-2 rounded-md transition-all duration-200",
+      "ghost": "hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 rounded-md transition-colors",
+      "outline": "border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 rounded-md transition-colors"
+    },
+    "cards": {
+      "base": "bg-card text-card-foreground rounded-xl border border-border/50 shadow-sm backdrop-blur-sm bg-opacity-80",
+      "glass": "bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl"
+    },
+    "inputs": {
+      "base": "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+    }
+  },
+  "layout_strategies": {
+    "dashboard_grid": {
+      "type": "bento",
+      "classes": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 p-4 md:p-6",
+      "areas": {
+        "hero": "col-span-1 md:col-span-2 lg:col-span-2 row-span-2",
+        "stats": "col-span-1",
+        "list": "col-span-1 row-span-2"
+      }
+    },
+    "mobile_responsive": "flex flex-col gap-4 p-4"
+  },
+  "assets": {
+    "images": [
+      {
+        "category": "hero_vehicle",
+        "url": "https://images.unsplash.com/photo-1676945009341-4bb62b036653?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzV8MHwxfHNlYXJjaHwxfHxUZXNsYSUyME1vZGVsJTIwUyUyMGlzb2xhdGVkJTIwYmxhY2slMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3MDIwNjUxMnww&ixlib=rb-4.1.0&q=85",
+        "description": "Black Tesla Model S for main vehicle status display",
+        "usage": "Central dashboard element, vehicle visualization"
+      },
+      {
+        "category": "battery_icon",
+        "url": "https://images.unsplash.com/photo-1698707781839-8739e5db5f12?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTV8MHwxfHNlYXJjaHwxfHxlbGVjdHJpYyUyMGNhciUyMGNoYXNzaXMlMjBiYXR0ZXJ5JTIwcGFja3xlbnwwfHx8fDE3NzAyMDY0OTN8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract representation for battery health (fallback)",
+        "usage": "Battery health card background or icon"
+      }
+    ],
+    "icons": {
+      "library": "lucide-react",
+      "style": "stroke-width-1.5"
+    }
+  },
+  "motion": {
+    "transitions": "transition-all duration-300 ease-out",
+    "hover_effects": "hover:scale-[1.02] hover:shadow-lg",
+    "loading": "animate-pulse"
+  },
+  "accessibility": {
+    "contrast": "Ensure 4.5:1 contrast ratio for text. Use lighter greys (#A1A1AA) on dark backgrounds, never dark grey.",
+    "focus_states": "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+    "aria_labels": "Required for all icon-only buttons and charts"
+  },
+  "universal_guidelines": {
+    "file_extension": ".js",
+    "component_style": "Functional components with prop-types (optional) or standard props",
+    "testing": "All interactive elements MUST include data-testid attribute (e.g., data-testid='vehicle-selector')",
+    "transparency": "Avoid pure transparent backgrounds on overlays. Use bg-black/80 or backdrop-blur.",
+    "charts": "Use Recharts or Chart.js with custom dark theme colors. Axis lines should be subtle (#333).",
+    "state_management": "Zustand stores should be modular (useVehicleStore, useDiagnosticsStore)."
+  },
+  "instructions_to_main_agent": [
+    "Implement the dashboard using a high-density bento grid layout.",
+    "Use the provided Tesla Model S image as the central 'Vehicle Status' visualization.",
+    "Create a 'VehicleSelector' component using Shadcn Select (customized for dark mode).",
+    "Simulate real-time data updates (speed, battery, temp) every 3 seconds using `setInterval` in a useEffect or Zustand middleware.",
+    "Ensure all text is legible on the dark background. Avoid dark blue text on black.",
+    "Use 'Barlow' font for headings to give it that automotive/technical feel. Add it via Google Fonts in index.html.",
+    "For the Battery Health chart, use a Line Chart with a gradient fill (green to transparent).",
+    "For Tire Pressure, visualize 4 values around a car silhouette (use the hero image or a simple CSS shape).",
+    "Strictly follow the file structure: /app/frontend/src/components/...",
+    "Do not use TypeScript syntax (interfaces, types) as the project is .js."
+  ]
+}
